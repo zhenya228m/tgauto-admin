@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TgAuto — Панель управления</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="app">
+
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon">T</div>
+            <div>
+                <div class="brand-name">TgAuto</div>
+                <div class="brand-caption">ADMIN PANEL</div>
+            </div>
+        </div>
+
+        <div class="sidebar-label">МЕНЮ</div>
+
+        <nav class="navigation">
+            <button class="nav-item active" data-page="dashboard">
+                <span class="nav-icon">◫</span>
+                Главная
+            </button>
+            <button class="nav-item" data-page="archive">
+                <span class="nav-icon">▤</span>
+                Архив сообщений
+                <span class="nav-count">12</span>
+            </button>
+            <button class="nav-item" data-page="users">
+                <span class="nav-icon">♙</span>
+                Пользователи
+            </button>
+            <button class="nav-item" data-page="blocks">
+                <span class="nav-icon">⊘</span>
+                Блокировки
+            </button>
+        </nav>
+
+        <div class="sidebar-label second-label">СИСТЕМА</div>
+
+        <nav class="navigation">
+            <button class="nav-item" data-page="settings">
+                <span class="nav-icon">⚙</span>
+                Настройки
+            </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="server-status">
+                <span class="status-dot"></span>
+                <div>
+                    <div class="server-title">Система активна</div>
+                    <div class="server-subtitle">Демонстрационный режим</div>
+                </div>
+            </div>
+
+            <div class="profile">
+                <div class="avatar admin-avatar">A</div>
+                <div class="profile-info">
+                    <div class="profile-name">Администратор</div>
+                    <div class="profile-role">Владелец TgAuto</div>
+                </div>
+                <span class="profile-more">···</span>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main">
+
+        <header class="topbar">
+            <div class="breadcrumbs">
+                <span>TgAuto</span>
+                <span class="breadcrumb-separator">/</span>
+                <strong id="breadcrumb">Главная</strong>
+            </div>
+
+            <div class="topbar-right">
+                <div class="mode-control">
+                    <span class="mode-indicator"></span>
+                    <span id="mode-label">Тестовый режим</span>
+                    <button class="mode-switch" id="mode-switch" aria-label="Переключить режим">
+                        <span></span>
+                    </button>
+                </div>
+
+                <div class="top-divider"></div>
+
+                <button class="icon-button" title="Уведомления">♧</button>
+                <div class="avatar top-avatar">A</div>
+            </div>
+        </header>
+
+        <div class="content">
+
+            <section class="page-heading">
+                <div>
+                    <div class="eyebrow">ОБЗОР СИСТЕМЫ</div>
+                    <h1 id="page-title">Главная</h1>
+                    <p id="page-description">Добро пожаловать в панель управления TgAuto.</p>
+                </div>
+
+                <div class="heading-actions">
+                    <div class="date-label">
+                        <span>◷</span>
+                        <span id="current-date">Сегодня</span>
+                    </div>
+                    <button class="refresh-button" id="refresh-button">
+                        <span>↻</span> Обновить
+                    </button>
+                </div>
+            </section>
+
+            <div class="api-warning hidden" id="api-warning">
+                <span>ⓘ</span>
+                <div>
+                    <strong>API пока не подключён</strong>
+                    <p>Подключим Python-сервер на Altare на следующем этапе. Сейчас реальные данные недоступны.</p>
+                </div>
+            </div>
+
+            <section id="dashboard-page" class="page-section">
+
+                <div class="stats-grid">
+
+                    <article class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-icon purple">♙</div>
+                            <span class="stat-period">За всё время</span>
+                        </div>
+                        <div class="stat-name">Подключённые пользователи</div>
+                        <div class="stat-bottom">
+                            <strong class="stat-value" data-demo="128">128</strong>
+                            <span class="stat-change positive">↗ 12.5%</span>
+                        </div>
+                        <div class="stat-footnote">Всего подключений</div>
+                    </article>
+
+                    <article class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-icon blue">▤</div>
+                            <span class="stat-period">За всё время</span>
+                        </div>
+                        <div class="stat-name">Сообщения в архиве</div>
+                        <div class="stat-bottom">
+                            <strong class="stat-value" data-demo="24 891">24 891</strong>
+                            <span class="stat-change positive">↗ 8.2%</span>
+                        </div>
+                        <div class="stat-footnote">Сохранено сообщений</div>
+                    </article>
+
+                    <article class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-icon green">↻</div>
+                            <span class="stat-period">За 7 дней</span>
+                        </div>
+                        <div class="stat-name">Редактирования</div>
+                        <div class="stat-bottom">
+                            <strong class="stat-value" data-demo="347">347</strong>
+                            <span class="stat-change positive">↗ 4.6%</span>
+                        </div>
+                        <div class="stat-footnote">Изменено сообщений</div>
+                    </article>
+
+                    <article class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-icon orange">⌫</div>
+                            <span class="stat-period">За 7 дней</span>
+                        </div>
+                        <div class="stat-name">Удаления</div>
+                        <div class="stat-bottom">
+                            <strong class="stat-value" data-demo="89">89</strong>
+                            <span class="stat-change negative">↘ 2.1%</span>
+                        </div>
+                        <div class="stat-footnote">Удалено сообщений</div>
+                    </article>
+
+                </div>
+
+                <div class="dashboard-grid">
+
+                    <article class="panel activity-panel">
+                        <div class="panel-heading">
+                            <div>
+                                <h2>Активность бота</h2>
+                                <p>Количество сообщений за выбранный период</p>
+                            </div>
+
+<div class="period-dropdown" id="period-dropdown">
+    <button class="period-select" id="period-button" type="button" aria-expanded="false">
+        <span id="period-label">Последние 7 дней</span>
+        <span class="period-arrow">⌄</span>
+    </button>
+
+    <div class="period-menu" id="period-menu">
+        <button class="period-option active" type="button" data-period="7">
+            <span>Последние 7 дней</span>
+            <span class="option-check">✓</span>
+        </button>
+        <button class="period-option" type="button" data-period="14">
+            <span>Последние 14 дней</span>
+            <span class="option-check">✓</span>
+        </button>
+        <button class="period-option" type="button" data-period="30">
+            <span>Последние 30 дней</span>
+            <span class="option-check">✓</span>
+        </button>
+    </div>
+</div>
+                        </div>
+
+                        <div class="chart-summary">
+                            <div>
+                                <strong id="chart-total">8 492</strong>
+                                <span>сообщений</span>
+                            </div>
+                            <span class="chart-growth">↗ 18.4% за период</span>
+                        </div>
+
+                        <div class="chart-container" id="activity-chart">
+                            <svg viewBox="0 0 800 250" preserveAspectRatio="none">
+                                <defs>
+                                    <linearGradient id="chart-fill" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0%" stop-color="#9274ff" stop-opacity=".32"/>
+                                        <stop offset="100%" stop-color="#9274ff" stop-opacity="0"/>
+                                    </linearGradient>
+                                    <linearGradient id="chart-line" x1="0" y1="0" x2="1" y2="0">
+                                        <stop offset="0%" stop-color="#7960ed"/>
+                                        <stop offset="100%" stop-color="#b38aff"/>
+                                    </linearGradient>
+                                </defs>
+
+                                <g class="chart-grid">
+                                    <line x1="0" y1="30" x2="800" y2="30"/>
+                                    <line x1="0" y1="85" x2="800" y2="85"/>
+                                    <line x1="0" y1="140" x2="800" y2="140"/>
+                                    <line x1="0" y1="195" x2="800" y2="195"/>
+                                </g>
+
+                                <path id="chart-area" d=""/>
+                                <path id="chart-line-path" d=""/>
+                            </svg>
+                            <div class="chart-tooltip" id="chart-tooltip"></div>
+                        </div>
+
+                        <div class="chart-labels" id="chart-labels"></div>
+                    </article>
+
+                    <article class="panel distribution-panel">
+                        <div class="panel-heading">
+                            <div>
+                                <h2>События архива</h2>
+                                <p>Распределение сообщений</p>
+                            </div>
+                            <button class="dots-button">···</button>
+                        </div>
+
+                        <div class="donut-wrapper">
+                            <div class="donut-chart">
+                                <div class="donut-center">
+                                    <strong>24.8k</strong>
+                                    <span>Всего</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="legend">
+                            <div class="legend-item">
+                                <span class="legend-dot purple-dot"></span>
+                                <span>Обычные сообщения</span>
+                                <strong>82%</strong>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-dot blue-dot"></span>
+                                <span>Редактирования</span>
+                                <strong>12%</strong>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-dot orange-dot"></span>
+                                <span>Удаления</span>
+                                <strong>6%</strong>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+
+                <div class="bottom-grid">
+
+                    <article class="panel events-panel">
+                        <div class="panel-heading">
+                            <div>
+                                <h2>Последние события</h2>
+                                <p>Недавняя активность пользователей</p>
+                            </div>
+                            <button class="text-button" data-page="archive">Весь архив →</button>
+                        </div>
+
+                        <div class="events-list" id="events-list"></div>
+                    </article>
+
+                    <article class="panel users-panel">
+                        <div class="panel-heading">
+                            <div>
+                                <h2>Пользователи</h2>
+                                <p>Состояние подключений</p>
+                            </div>
+                            <button class="text-button" data-page="users">Все →</button>
+                        </div>
+
+                        <div class="user-overview">
+                            <div class="user-overview-icon">♙</div>
+                            <div>
+                                <strong>128</strong>
+                                <span>Всего подключено</span>
+                            </div>
+                        </div>
+
+                        <div class="user-progress">
+                            <div class="progress-line">
+                                <span></span>
+                            </div>
+                            <div class="progress-info">
+                                <span>Активные подключения</span>
+                                <strong>116 / 128</strong>
+                            </div>
+                        </div>
+
+                        <div class="user-progress">
+                            <div class="progress-line blocked-line">
+                                <span></span>
+                            </div>
+                            <div class="progress-info">
+                                <span>Отключённые</span>
+                                <strong>12 / 128</strong>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+            <section id="other-page" class="page-section hidden">
+                <div class="panel empty-page">
+                    <div class="empty-icon" id="empty-icon">▤</div>
+                    <h2 id="empty-title">Раздел в разработке</h2>
+                    <p id="empty-description">Скоро здесь появится функциональность.</p>
+                </div>
+            </section>
+
+        </div>
+    </main>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
